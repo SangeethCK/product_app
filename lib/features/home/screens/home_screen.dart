@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mechinetest/features/home/screens/widgets/home_product_offer_widget.dart';
 import 'package:mechinetest/features/home/logic/home_logic.dart';
 import 'package:mechinetest/features/home/logic/home_state.dart';
+import 'package:mechinetest/features/home/screens/widgets/home_product_offer_widget.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
+import 'package:mechinetest/shared/appbar/appbar.dart';
 import 'package:mechinetest/shared/extension/helper.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
 import 'package:mechinetest/shared/snackbars/snackbar.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home'), actions: [
+      appBar: AppbarWidget(hideLeading: true, title: 'Home', actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: GestureDetector(

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:mechinetest/shared/consrants/colors.dart';
+import 'package:mechinetest/shared/constants/colors.dart';
 
 class CustomImage extends StatelessWidget {
   const CustomImage({
@@ -70,7 +70,7 @@ class CustomImage extends StatelessWidget {
                           scale: .6,
                           child: const Icon(
                             Icons.image_not_supported,
-                            color: kBlack26,
+                            color: kBlack,
                           ),
                         ),
                       ),

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
 import 'package:mechinetest/features/home/domain/model/home_model.dart';
 import 'package:mechinetest/shared/api/networks/network.dart';
 

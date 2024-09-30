@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mechinetest/shared/consrants/colors.dart';
+import 'package:mechinetest/shared/constants/colors.dart';
 
 class AuthTextfield extends StatelessWidget {
   final String hintText;

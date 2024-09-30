@@ -1,16 +1,14 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:mechinetest/features/cart/domain/model/cart_model.dart';
 import 'package:mechinetest/features/home/domain/model/home_model.dart';
 import 'package:mechinetest/features/home/domain/repository/home_repository.dart';
 import 'package:mechinetest/features/home/domain/services/home_service.dart';
 import 'package:mechinetest/features/home/logic/home_state.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
-import 'package:mechinetest/shared/helper/helper.dart';
+import 'package:mechinetest/shared/db_helper/helper.dart';
 
-@injectable
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepository _homeRepository = HomeService();
 

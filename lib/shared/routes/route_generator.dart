@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mechinetest/features/auth/screens/sign_up/sign_in.dart';
+import 'package:mechinetest/features/auth/screens/sign_in/sign_in.dart';
+import 'package:mechinetest/features/auth/screens/sign_up/sign_up_screen.dart';
 import 'package:mechinetest/features/cart/screens/cart_screen.dart';
 import 'package:mechinetest/features/home/screens/home_screen.dart';
 import 'package:mechinetest/features/splash/splash_screen.dart';
@@ -12,6 +13,8 @@ class RouteGenerator {
     switch (settings.name) {
       case routeRoot:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case routeSignUp:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
       case routeLogin:
         return MaterialPageRoute(builder: (_) => const SignInScreen());
       case routeHome:

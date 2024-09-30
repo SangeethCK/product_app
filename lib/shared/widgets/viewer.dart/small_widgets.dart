@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 Widget logoWidget({double? width, double? height}) => Image.asset(
-      'assets/icons/logo.png',
+      'assets/icons/logo copy.png',
       width: width ?? 110,
-      //height:height??80,
     );
 
 Widget authTextfieldLabel({

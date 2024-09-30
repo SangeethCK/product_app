@@ -5,7 +5,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:mechinetest/shared/consrants/base_url.dart';
+import 'package:mechinetest/shared/constants/base_url.dart';
 
 class NetworkProvider {
   final Dio _dio;

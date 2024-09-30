@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mechinetest/shared/consrants/colors.dart';
-
+import 'package:mechinetest/shared/constants/colors.dart';
 
 class FontPalette {
   static const themeFont = "Urbanist";
@@ -9,7 +8,7 @@ class FontPalette {
   static TextTheme get textLightTheme {
     return Typography.englishLike2018.apply(
         fontSizeFactor: 0.8.sp,
-        bodyColor: kPrimaryColor,
+        bodyColor: primaryColor,
         fontFamily: FontPalette.themeFont);
   }
 

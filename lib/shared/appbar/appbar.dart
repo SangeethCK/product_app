@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mechinetest/shared/consrants/colors.dart';
+import 'package:mechinetest/shared/constants/colors.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppbarWidget({
@@ -34,7 +34,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: logo ? 22.w : null,
       shape: Border(
           bottom: BorderSide(
-              color: shadow ? kBlack26 : kTransparentColor, width: 0.25)),
+              color: shadow ? kBlack : kTransparentColor, width: 0.25)),
       leading: hideLeading
           ? const SizedBox()
           : logo

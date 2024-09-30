@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mechinetest/shared/consrants/colors.dart';
+import 'package:mechinetest/shared/constants/colors.dart';
 import 'package:mechinetest/shared/routes/navigator.dart';
 import 'package:mechinetest/shared/themes/font_palette.dart';
 

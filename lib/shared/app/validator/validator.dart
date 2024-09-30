@@ -57,76 +57,13 @@ class Validator {
     }
   }
 
-  static List<TextInputFormatter>? inputFormatter(InputFormatType type) {
-    List<TextInputFormatter>? val;
-    switch (type) {
-      case InputFormatType.phoneNumber:
-        val = [
-          FilteringTextInputFormatter.allow(RegExp("[0-9]")),
-        ];
-        break;
-
-      case InputFormatType.password:
-        val = [
-          FilteringTextInputFormatter.allow(RegExp("[0-9a-zA-Z@]")),
-        ];
-        break;
-      case InputFormatType.name:
-        val = [FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z]+|\s"))];
-        break;
-      case InputFormatType.email:
-        val = [FilteringTextInputFormatter.deny(RegExp(r'[- /+?:;*#$%^&()]'))];
-        break;
+ static String? validateIsEmpty(String value, {String? returnText}) {
+    if (value.isEmpty) {
+      return returnText ?? '';
+    } else if (value.trim() == '') {
+      return returnText ?? '';
+    } else {
+      return null;
     }
-    return val;
-  }
-
-  static String? validateOTPCode(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Enter the email verification code';
-    } else if (value.length != 6) {
-      return 'Enter exactly 6 digits';
-    }
-    return null;
-  }
-
-  static String? validateName(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Name is required';
-    } else if (value.length < 3) {
-      return 'The field can\'t be empty';
-    }
-    return null;
-  }
-
-  static String? validatePhone(String? value) {
-    if (value != null && value.isNotEmpty && value.length != 10) {
-      return 'Enter exactly 10 digits';
-    }
-    return null;
-  }
-
-  static String? validateField(String? value, String errorMessage) {
-    if (value == null || value.isEmpty) {
-      return errorMessage;
-    }
-    return null;
-  }
-
-  static String? validateDropdownField(String? value, String errorMessage) {
-    if (value == null || value.isEmpty || value == '0') {
-      return errorMessage;
-    }
-    return null;
-  }
-
-  static String? validateURL(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'URL is required';
-    } else if (!RegExp(r'^(https?:\/\/)?([\w\d\-]+\.)+[\w]{2,}(\/.*)?$')
-        .hasMatch(value)) {
-      return 'Enter a valid URL';
-    }
-    return null;
   }
 }

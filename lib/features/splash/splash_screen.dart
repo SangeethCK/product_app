@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mechinetest/shared/extension/helper.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
+import 'package:mechinetest/shared/themes/font_palette.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,7 +30,11 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(),
-        child: const Center(child: Text('Ecomme')),
+        child: Center(
+            child: Text(
+          'E-com app',
+          style: FontPalette.urbenist24,
+        )),
       ),
     );
   }

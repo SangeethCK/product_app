@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mechinetest/features/home/screens/widgets/custome_image.dart';
-import 'package:mechinetest/shared/consrants/colors.dart';
+import 'package:mechinetest/shared/constants/colors.dart';
 
 class ProductCard extends StatelessWidget {
   final String imageUrl;
@@ -52,7 +52,7 @@ class ProductCard extends StatelessWidget {
                 icon: const Icon(Icons.shopping_cart),
                 label: const Text('Add to cart'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: kColorLight4,
+                  backgroundColor: Colors.grey.shade300,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                 ),
