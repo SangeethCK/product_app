@@ -9,6 +9,7 @@ import 'package:mechinetest/shared/app/validator/validator.dart';
 import 'package:mechinetest/shared/constants/colors.dart';
 import 'package:mechinetest/shared/constants/image.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
+import 'package:mechinetest/shared/snackbars/snackbar.dart';
 import 'package:mechinetest/shared/text_fields/text_field_widget.dart';
 import 'package:mechinetest/shared/themes/font_palette.dart';
 import 'package:mechinetest/shared/widgets/buttons/label_button.dart';
@@ -30,6 +31,10 @@ class SignInScreen extends StatelessWidget {
       body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.signInFetchStatus == ApiFetchStatus.success) {
+            kSnackBar(
+              content: 'Welcome Back',
+              success: true,
+            );
             Navigator.pushNamed(context, routeHome);
           }
         },

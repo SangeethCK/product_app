@@ -34,11 +34,12 @@ class SignUpScreen extends StatelessWidget {
       body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.signUpFetchStatus == ApiFetchStatus.success) {
+            Navigator.pushNamed(context, routeLogin);
+
             kSnackBar(
               content: 'Successfully registered',
               success: true,
             );
-            Navigator.pushNamed(context, routeLogin);
           }
         },
         child: OverlayLoader(

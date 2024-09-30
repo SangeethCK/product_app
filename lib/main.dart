@@ -21,9 +21,6 @@ void main() async {
     BlocProvider(
       create: (context) => AuthCubit(),
     ),
-    // BlocProvider(
-    //   create: (context) => getIt<AuthCubit>(),
-    // ),
     BlocProvider(create: (context) => HomeCubit()),
   ], child: const MyApp()));
 }
