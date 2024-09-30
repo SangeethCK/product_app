@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "563903042508",
+    "project_id": "grostore-8deaf",
+    "storage_bucket": "grostore-8deaf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563903042508:android:9a326b695ba43ccfdc0369",
+        "android_client_info": {
+          "package_name": "com.example.groceryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA6vXm5fwqqnUpEIAUENF8GHFO7zU_3aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563903042508:android:1150efe442a6a956dc0369",
+        "android_client_info": {
+          "package_name": "com.example.mechinetest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA6vXm5fwqqnUpEIAUENF8GHFO7zU_3aw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
