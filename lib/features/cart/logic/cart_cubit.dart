@@ -13,14 +13,12 @@ class CartCubit extends Cubit<CartState> {
   Future<void> addToCart(HomeModel product) async {
     try {
       emit(state.copyWith(cartStatus: ApiFetchStatus.loading));
-
       final cartItem = CartItem(
         productId: product.productId ?? 0,
         productName: product.displayProductName ?? '',
         price: double.tryParse(product.productPrice ?? '0.0') ?? 0.0,
         quantity: 1,
       );
-
       await CartDatabaseHelper().insertCartItem(cartItem);
       emit(state.copyWith(cartStatus: ApiFetchStatus.success));
     } catch (e) {
@@ -34,9 +32,9 @@ class CartCubit extends Cubit<CartState> {
     try {
       final cartItems = await CartDatabaseHelper().getCartItems();
       emit(state.copyWith(
-          cartItems: cartItems, cartStatus: ApiFetchStatus.success));
+          cartItems: cartItems, cartLoad: ApiFetchStatus.success));
     } catch (e) {
-      emit(state.copyWith(cartStatus: ApiFetchStatus.failed));
+      emit(state.copyWith(cartLoad: ApiFetchStatus.failed));
     }
   }
 //=-=-=-=-=-=-= Update cart =-=-=-=-=-=-=-=
@@ -46,9 +44,25 @@ class CartCubit extends Cubit<CartState> {
       await CartDatabaseHelper().updateCartItemQuantity(productId, newQuantity);
       final updatedCartItems = await CartDatabaseHelper().getCartItems();
       emit(state.copyWith(
-          cartItems: updatedCartItems, cartStatus: ApiFetchStatus.success));
+          cartItems: updatedCartItems, cartLoad: ApiFetchStatus.success));
     } catch (e) {
-      emit(state.copyWith(cartStatus: ApiFetchStatus.failed));
+      emit(state.copyWith(cartLoad: ApiFetchStatus.failed));
     }
+  }
+  //=-=-=-=-=-=-= Remove cart =-=-=-=-=-=-=-=
+
+  Future<void> removeFromCart(int productId) async {
+    try {
+      await CartDatabaseHelper().deleteCartItem(productId);
+      await getCartItems();
+    } catch (e) {
+      emit(state.copyWith(cartLoad: ApiFetchStatus.failed));
+      log("Error removing from cart: $e");
+    }
+  }
+  //=-=-=-=-=-=-= Reset =-=-=-=-=-=-=-=
+
+  void reset() {
+    emit(const CartState());
   }
 }

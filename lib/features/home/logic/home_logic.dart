@@ -10,7 +10,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit() : super(const HomeState());
 
-  // Fetch home products
   Future<void> fetchHomeProducts() async {
     try {
       emit(state.copyWith(homeStatus: ApiFetchStatus.loading));

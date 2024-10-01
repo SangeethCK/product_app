@@ -67,7 +67,7 @@ void kSnackBar({
                 softWrap: false,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: FontPalette.urbenist18.copyWith(
+                style: FontPalette.urbenist14.copyWith(
                   color: kWhite,
                 ),
               ),

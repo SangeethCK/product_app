@@ -25,9 +25,6 @@ const Color highlightColor = Color(0x1A41AD49);
 const Color kColorBorder2 = Color(0XFFD8D8D8);
 const Color kFieldFillColor = Color(0XFFF4F4F4);
 const Color kScaffoldColor = Color(0XFFFFFFFF);
-
 const Color kColorMaterialLight = Color(0XFF636363);
-
 const Color kTransparentColor = Colors.transparent;
-
 const Color kBlack10 = Color(0x1A000000);

@@ -8,6 +8,7 @@ import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
 import 'package:mechinetest/shared/app/validator/validator.dart';
 import 'package:mechinetest/shared/constants/colors.dart';
 import 'package:mechinetest/shared/constants/image.dart';
+import 'package:mechinetest/shared/constants/string_constants.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
 import 'package:mechinetest/shared/snackbars/snackbar.dart';
 import 'package:mechinetest/shared/text_fields/text_field_widget.dart';
@@ -32,10 +33,15 @@ class SignInScreen extends StatelessWidget {
         listener: (context, state) {
           if (state.signInFetchStatus == ApiFetchStatus.success) {
             kSnackBar(
-              content: 'Welcome Back',
+              content: StringConstants.welcome,
               success: true,
             );
             Navigator.pushNamed(context, routeHome);
+          } else {
+            kSnackBar(
+              content: StringConstants.invalid,
+              success: false,
+            );
           }
         },
         child: OverlayLoader(
@@ -69,7 +75,7 @@ class SignInScreen extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 30),
                                   child: Text(
-                                    'Sign in to your\nAccount',
+                                    StringConstants.signInTo,
                                     style: FontPalette.urbenist24,
                                   ),
                                 ),
@@ -77,19 +83,21 @@ class SignInScreen extends StatelessWidget {
                                   height:
                                       0.15 * MediaQuery.of(context).size.height,
                                 ),
-                                authTextfieldLabel(label: 'Email'),
+                                authTextfieldLabel(
+                                    label: StringConstants.email),
                                 AuthTextfield(
                                   validator: (v) => Validator.validateEmail(v),
                                   controller: email,
-                                  hintText: 'Enter email',
+                                  hintText: StringConstants.email,
                                 ),
                                 5.verticalSpace,
-                                authTextfieldLabel(label: 'Password'),
+                                authTextfieldLabel(
+                                    label: StringConstants.password),
                                 AuthTextfield(
                                   validator: (value) =>
                                       Validator.validateIsEmpty(value),
                                   controller: password,
-                                  hintText: 'Enter Password',
+                                  hintText: StringConstants.password,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(
@@ -98,7 +106,7 @@ class SignInScreen extends StatelessWidget {
                                     width: double.maxFinite,
                                     child: LabelButton(
                                       bgColor: kColorMaterialLight,
-                                      label: 'Sign in',
+                                      label: StringConstants.signIn,
                                       onTap: () {
                                         if (loginFormKey.currentState
                                                 ?.validate() ??
@@ -140,12 +148,12 @@ class SignInScreen extends StatelessWidget {
                                         top: 30, bottom: 30),
                                     child: RichText(
                                       text: TextSpan(
-                                          text: 'Don’t have an account? ',
+                                          text: StringConstants.dontHave,
                                           style: FontPalette.urbenist12
                                               .copyWith(color: kBlack),
                                           children: <TextSpan>[
                                             TextSpan(
-                                              text: ' Signup Now',
+                                              text: StringConstants.signUpNow,
                                               recognizer: TapGestureRecognizer()
                                                 ..onTap = () {
                                                   Navigator.pushNamed(

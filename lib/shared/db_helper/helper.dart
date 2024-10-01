@@ -32,10 +32,10 @@ class CartDatabaseHelper {
   }
 
   Future<void> insertCartItem(CartItem item) async {
-    final db = await database; // Access the database
+    final db = await database;
     await db.insert(
       'cart',
-      item.toMap(), // Use the CartItem toMap method
+      item.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -56,9 +56,9 @@ class CartDatabaseHelper {
       whereArgs: [productId],
     );
     if (result > 0) {
-      log('CartItem with productId $productId deleted successfully.');
+      log('CartItem with productId dude $productId deleted successfully.');
     } else {
-      log('Error: No CartItem found with productId $productId.');
+      log('Error: No CartItem found with productId dude $productId.');
     }
   }
 

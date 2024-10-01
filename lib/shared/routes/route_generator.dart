@@ -8,7 +8,6 @@ import 'package:mechinetest/shared/routes/routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // final Object? args = settings.arguments;
 
     switch (settings.name) {
       case routeRoot:

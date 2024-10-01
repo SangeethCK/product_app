@@ -8,9 +8,11 @@ import 'package:mechinetest/features/auth/logic/auth_state.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
 import 'package:mechinetest/shared/app/validator/validator.dart';
 import 'package:mechinetest/shared/constants/colors.dart';
+import 'package:mechinetest/shared/constants/string_constants.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
 import 'package:mechinetest/shared/snackbars/snackbar.dart';
 import 'package:mechinetest/shared/text_fields/text_field_widget.dart';
+import 'package:mechinetest/shared/themes/font_palette.dart';
 import 'package:mechinetest/shared/widgets/buttons/label_button.dart';
 import 'package:mechinetest/shared/widgets/card/app_background_card.dart';
 import 'package:mechinetest/shared/widgets/overlay/overlay.dart';
@@ -35,9 +37,8 @@ class SignUpScreen extends StatelessWidget {
         listener: (context, state) {
           if (state.signUpFetchStatus == ApiFetchStatus.success) {
             Navigator.pushNamed(context, routeLogin);
-
             kSnackBar(
-              content: 'Successfully registered',
+              content: StringConstants.registerd,
               success: true,
             );
           }
@@ -52,16 +53,11 @@ class SignUpScreen extends StatelessWidget {
                   bottom: Platform.isIOS ? 50 : 40),
               children: [
                 Align(alignment: Alignment.topLeft, child: logoWidget()),
-                const Padding(
-                  padding: EdgeInsets.only(top: 40, bottom: 35),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 35),
                   child: Text(
-                    'Register',
-                    style: TextStyle(
-                      color: Color(0xff333F49),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: -0.1,
-                    ),
+                    StringConstants.register,
+                    style: FontPalette.urbenist16,
                   ),
                 ),
                 Form(
@@ -69,35 +65,37 @@ class SignUpScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      authTextfieldLabel(label: 'Name'),
+                      authTextfieldLabel(label: StringConstants.name),
                       AuthTextfield(
-                        hintText: 'Enter your name',
+                        hintText: StringConstants.enterName,
                         controller: name,
                         validator: (value) => Validator.validateIsEmpty(value),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 23),
-                        child: authTextfieldLabel(label: 'Email'),
+                        child: authTextfieldLabel(label: StringConstants.email),
                       ),
                       AuthTextfield(
-                        hintText: 'Enter your email',
+                        hintText: StringConstants.enterYourEmail,
                         controller: email,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 23),
-                        child: authTextfieldLabel(label: 'Password'),
+                        child:
+                            authTextfieldLabel(label: StringConstants.password),
                       ),
                       AuthTextfield(
                         controller: password,
-                        hintText: 'Enter your password',
+                        hintText: StringConstants.enterYourPswd,
                         validator: (value) => Validator.validateIsEmpty(value),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 23),
-                        child: authTextfieldLabel(label: 'Confirm Password'),
+                        child: authTextfieldLabel(
+                            label: StringConstants.confirmPswd),
                       ),
                       AuthTextfield(
-                        hintText: 'Confirm password',
+                        hintText: StringConstants.confirmPswd,
                         validator: (value) {
                           if (value.isEmpty || value.trim() == '') {
                             return '';
@@ -128,7 +126,7 @@ class SignUpScreen extends StatelessWidget {
                 width: double.maxFinite,
                 child: LabelButton(
                   bgColor: kColorMaterialLight,
-                  label: 'Create account',
+                  label: StringConstants.createAccount,
                   onTap: () {
                     if (registerFormKey.currentState?.validate() ?? false) {
                       context.read<AuthCubit>().registerWithEmailPassword(
@@ -143,28 +141,17 @@ class SignUpScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20),
                 child: RichText(
                   text: TextSpan(
-                      text: 'Already an account? ',
-                      style: const TextStyle(
-                        color: Color(0xff1E232C),
-                        fontSize: 15,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.1,
-                      ),
+                      text: StringConstants.haveAccount,
+                      style:
+                          FontPalette.urbenist14.copyWith(color: Colors.grey),
                       children: <TextSpan>[
                         TextSpan(
-                          text: 'Login Now',
+                          text: StringConstants.loginNow,
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
                               Navigator.pop(context);
                             },
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.secondary,
-                            fontSize: 15,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.1,
-                          ),
+                          style: FontPalette.urbenist14.copyWith(color: kBlack),
                         ),
                       ]),
                 ),

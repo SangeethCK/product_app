@@ -9,10 +9,14 @@ import 'package:mechinetest/features/home/logic/home_state.dart';
 import 'package:mechinetest/features/home/screens/widgets/product_card.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
 import 'package:mechinetest/shared/appbar/appbar.dart';
+import 'package:mechinetest/shared/constants/image.dart';
+import 'package:mechinetest/shared/constants/string_constants.dart';
 import 'package:mechinetest/shared/extension/helper.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
 import 'package:mechinetest/shared/snackbars/snackbar.dart';
 import 'package:mechinetest/shared/text_fields/text_field_widget.dart';
+import 'package:mechinetest/shared/themes/font_palette.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,27 +37,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppbarWidget(logo: true, centerTitle: true, title: 'Home', actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: BlocBuilder<CartCubit, CartState>(
-            builder: (context, state) {
-              return GestureDetector(
-                  onTap: () {
-                    context.read<CartCubit>().getCartItems();
-                    Navigator.pushNamed(context, routeCart);
-                  },
-                  child: SvgPicture.asset('assets/icons/cart.svg'));
-            },
+      appBar: AppbarWidget(
+        logo: true,
+        centerTitle: true,
+        title: StringConstants.home,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: GestureDetector(
+              onTap: () {
+                context.read<CartCubit>().reset();
+                context.read<CartCubit>().getCartItems();
+                Navigator.pushNamed(context, routeCart);
+              },
+              child: SvgPicture.asset(Assets.cart),
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
       body: BlocListener<CartCubit, CartState>(
         listener: (context, state) {
           if (state.cartStatus == ApiFetchStatus.success) {
             kSnackBar(
-              content: 'Successfully added to cart',
+              content: StringConstants.addToCart,
               success: true,
             );
           }
@@ -63,17 +69,39 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               AuthTextfield(
-                suffixIcon: SvgPicture.asset('assets/icons/Group 1.svg'),
-                hintText: 'Search Category',
+                suffixIcon: SvgPicture.asset(Assets.search),
+                hintText: StringConstants.searchCat,
                 radius: 15,
               ),
               16.verticalSpace,
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   if (state.homeStatus == ApiFetchStatus.loading) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Expanded(
+                      child: GridView.builder(
+                        itemCount: state.homeList?.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 15.0,
+                          crossAxisSpacing: 12.0,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    );
                   } else if (state.homeStatus == ApiFetchStatus.failed) {
-                    return Center(child: Text(state.error ?? 'Error occurred'));
+                    return Center(child: Text(state.error ?? ''));
                   } else if (state.homeStatus == ApiFetchStatus.success) {
                     return Expanded(
                       child: GridView.builder(
@@ -104,7 +132,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   } else {
-                    return const Center(child: Text('No products available'));
+                    return Center(
+                        child: Text(
+                      StringConstants.noProduct,
+                      style: FontPalette.urbenist14,
+                    ));
                   }
                 },
               ),
