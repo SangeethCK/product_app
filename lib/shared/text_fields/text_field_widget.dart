@@ -10,6 +10,7 @@ class AuthTextfield extends StatelessWidget {
   final Function? onChange;
   final FormFieldValidator? validator;
   final bool isEnabled;
+  final double ?radius;
   const AuthTextfield(
       {super.key,
       required this.hintText,
@@ -19,6 +20,7 @@ class AuthTextfield extends StatelessWidget {
       this.isObscure = false,
       this.onChange,
       this.isEnabled = true,
+      this.radius,
       this.validator});
 
   @override
@@ -59,7 +61,7 @@ class AuthTextfield extends StatelessWidget {
           )),
           suffixIconConstraints: const BoxConstraints(maxHeight: 20),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(radius??5.0),
             borderSide: const BorderSide(
               color: Color(0xffE8ECF4),
             ),

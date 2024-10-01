@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mechinetest/features/auth/logic/auth_cubit.dart';
+import 'package:mechinetest/features/cart/logic/cart_cubit.dart';
 import 'package:mechinetest/features/home/logic/home_logic.dart';
 import 'package:mechinetest/my_app.dart';
 import 'package:mechinetest/shared/db_helper/helper.dart';
@@ -22,5 +23,6 @@ void main() async {
       create: (context) => AuthCubit(),
     ),
     BlocProvider(create: (context) => HomeCubit()),
+    BlocProvider(create: (context) => CartCubit()),
   ], child: const MyApp()));
 }

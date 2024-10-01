@@ -1,6 +1,8 @@
+import 'dart:developer';
+
 import 'package:mechinetest/features/cart/domain/model/cart_model.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class CartDatabaseHelper {
   static final CartDatabaseHelper _instance = CartDatabaseHelper._internal();
@@ -39,10 +41,34 @@ class CartDatabaseHelper {
   }
 
   Future<List<CartItem>> getCartItems() async {
-    final db = await database; // Access the database
+    final db = await database;
     final List<Map<String, dynamic>> maps = await db.query('cart');
     return List.generate(maps.length, (i) {
-      return CartItem.fromMap(maps[i]); // Convert map to CartItem
+      return CartItem.fromMap(maps[i]);
     });
+  }
+
+  Future<void> deleteCartItem(int productId) async {
+    final db = await database;
+    int result = await db.delete(
+      'cart',
+      where: 'productId = ?',
+      whereArgs: [productId],
+    );
+    if (result > 0) {
+      log('CartItem with productId $productId deleted successfully.');
+    } else {
+      log('Error: No CartItem found with productId $productId.');
+    }
+  }
+
+  Future<void> updateCartItemQuantity(int productId, int newQuantity) async {
+    final db = await database;
+    await db.update(
+      'cart',
+      {'quantity': newQuantity},
+      where: 'productId = ?',
+      whereArgs: [productId],
+    );
   }
 }

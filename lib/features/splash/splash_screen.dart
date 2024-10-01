@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:mechinetest/shared/constants/colors.dart';
 import 'package:mechinetest/shared/extension/helper.dart';
 import 'package:mechinetest/shared/routes/routes.dart';
 import 'package:mechinetest/shared/themes/font_palette.dart';
@@ -28,13 +29,26 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(),
-        child: Center(
-            child: Text(
-          'E-com app',
-          style: FontPalette.urbenist24,
-        )),
+      body: Stack(
+        children: [
+          Image.asset(
+            'assets/icons/8140 1.png',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 35),
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                textAlign: TextAlign.center,
+                'Welcome \nto our store',
+                style: FontPalette.urbenist34.copyWith(color: kWhite),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

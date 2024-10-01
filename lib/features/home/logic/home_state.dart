@@ -1,31 +1,39 @@
-import 'package:equatable/equatable.dart';
+import 'package:mechinetest/features/cart/domain/model/cart_model.dart';
 import 'package:mechinetest/features/home/domain/model/home_model.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
 
-class HomeState extends Equatable {
+class HomeState {
   final ApiFetchStatus homeStatus;
   final ApiFetchStatus cartStatus;
   final List<HomeModel>? homeList;
-
+  final List<CartItem>? cartItems;
   final String? error;
-  const HomeState(
-      {this.homeStatus = ApiFetchStatus.idle,
-      this.error,
-      this.homeList,
-      this.cartStatus = ApiFetchStatus.idle});
 
-  @override
-  List<Object?> get props => [homeStatus, error, homeList, cartStatus];
+  const HomeState({
+    this.homeStatus = ApiFetchStatus.idle,
+    this.cartStatus = ApiFetchStatus.idle,
+    this.homeList,
+    this.cartItems,
+    this.error,
+  });
 
   HomeState copyWith({
     ApiFetchStatus? homeStatus,
     ApiFetchStatus? cartStatus,
-    String? error,
     List<HomeModel>? homeList,
-  }) =>
-      HomeState(
-          homeStatus: homeStatus ?? this.homeStatus,
-          error: error ?? this.error,
-          homeList: homeList ?? this.homeList,
-          cartStatus: cartStatus ?? this.cartStatus);
+    List<CartItem>? cartItems,
+    String? error,
+  }) {
+    return HomeState(
+      homeStatus: homeStatus ?? this.homeStatus,
+      cartStatus: cartStatus ?? this.cartStatus,
+      homeList: homeList ?? this.homeList,
+      cartItems: cartItems ?? this.cartItems,
+      error: error ?? this.error,
+    );
+  }
+
+  @override
+  List<Object?> get props =>
+      [homeStatus, cartStatus, homeList, cartItems, error];
 }

@@ -31,7 +31,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       ),
       backgroundColor: color,
       elevation: shadow ? null : 0,
-      leadingWidth: logo ? 22.w : null,
+      leadingWidth: logo ? 45.w : null,
       shape: Border(
           bottom: BorderSide(
               color: shadow ? kBlack : kTransparentColor, width: 0.25)),
@@ -40,7 +40,12 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
           : logo
               ? Transform.scale(
                   scale: 1,
-                  child: SvgPicture.asset(''),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: SvgPicture.asset(
+                      'assets/icons/user.svg',
+                    ),
+                  ),
                 )
               : Navigator.canPop(context)
                   ? IconButton(

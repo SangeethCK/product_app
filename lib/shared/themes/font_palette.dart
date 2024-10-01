@@ -8,7 +8,7 @@ class FontPalette {
   static TextTheme get textLightTheme {
     return Typography.englishLike2018.apply(
         fontSizeFactor: 0.8.sp,
-        bodyColor: primaryColor,
+        bodyColor: kBlack,
         fontFamily: FontPalette.themeFont);
   }
 
