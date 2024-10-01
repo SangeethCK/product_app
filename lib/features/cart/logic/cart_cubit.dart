@@ -1,12 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mechinetest/features/cart/domain/model/cart_model.dart';
 import 'package:mechinetest/features/cart/logic/cart_state.dart';
 import 'package:mechinetest/features/home/domain/model/home_model.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
 import 'package:mechinetest/shared/db_helper/helper.dart';
 
+@injectable
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(const CartState());
 //=-=-=-=-=-=-= Add to cart =-=-=-=-=-=-=-=

@@ -50,6 +50,10 @@ dependencies:
   sqflite: ^2.3.3+2
   path: ^1.9.0
   shimmer: ^2.0.0
+  get_it: ^7.7.0
+  injectable: ^2.3.2
+  build_runner: ^2.4.12
+  injectable_generator: ^2.6.1
 
 
 dev_dependencies:

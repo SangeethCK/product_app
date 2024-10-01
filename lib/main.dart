@@ -7,9 +7,11 @@ import 'package:mechinetest/features/cart/logic/cart_cubit.dart';
 import 'package:mechinetest/features/home/logic/home_logic.dart';
 import 'package:mechinetest/my_app.dart';
 import 'package:mechinetest/shared/db_helper/helper.dart';
+import 'package:mechinetest/shared/dependency_injection/injectable.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
 
   await Firebase.initializeApp();
   CartDatabaseHelper();
@@ -19,10 +21,8 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   runApp(MultiBlocProvider(providers: [
-    BlocProvider(
-      create: (context) => AuthCubit(),
-    ),
-    BlocProvider(create: (context) => HomeCubit()),
-    BlocProvider(create: (context) => CartCubit()),
+    BlocProvider(create: (context) => getIt<AuthCubit>()),
+    BlocProvider(create: (context) => getIt<HomeCubit>()),
+    BlocProvider(create: (context) => getIt<CartCubit>()),
   ], child: const MyApp()));
 }

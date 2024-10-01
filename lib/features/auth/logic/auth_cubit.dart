@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mechinetest/features/auth/logic/auth_state.dart';
 import 'package:mechinetest/shared/app/enums/api_fetch_status.dart';
 
+@injectable
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(const AuthState());
 //Login Method
