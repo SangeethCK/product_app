@@ -25,4 +25,5 @@ class StringConstants {
   static String searchCat = 'Search Category';
   static String addToCart = 'Successfully added to cart';
   static String home = 'Home';
+  static String wlcm = 'Welcome \nto our store';
 }

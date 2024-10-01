@@ -6,4 +6,5 @@ class Assets {
   static const logoImage = 'assets/icons/logo copy.png';
   static const cart = 'assets/icons/cart.svg';
   static const search = 'assets/icons/Group 1.svg';
+  static const splash = 'assets/icons/8140 1.png';
 }

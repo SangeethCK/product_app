@@ -29,6 +29,5 @@ class CartState {
         cartLoad: cartLoad ?? this.cartLoad);
   }
 
-  @override
   List<Object?> get props => [cartStatus, cartItems, error];
 }

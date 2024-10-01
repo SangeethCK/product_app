@@ -1,5 +1,3 @@
-import 'package:flutter/services.dart';
-
 enum InputFormatType { name, phoneNumber, email, password }
 
 class Validator {
@@ -57,7 +55,7 @@ class Validator {
     }
   }
 
- static String? validateIsEmpty(String value, {String? returnText}) {
+  static String? validateIsEmpty(String value, {String? returnText}) {
     if (value.isEmpty) {
       return returnText ?? '';
     } else if (value.trim() == '') {

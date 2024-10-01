@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-
 class LoadingOverlay {
   OverlayEntry? _overlay;
 
@@ -38,12 +37,12 @@ class OverlayLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => LoaderOverlay(
+        // ignore: deprecated_member_use
         useDefaultLoading: false,
         overlayWidgetBuilder: (progress) => Center(
             child: CircularProgressIndicator(
           color: Theme.of(context).primaryColor,
         )),
-        
         overlayColor: Colors.white.withOpacity(0.5),
         child: child,
       );

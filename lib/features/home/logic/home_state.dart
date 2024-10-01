@@ -33,7 +33,6 @@ class HomeState {
     );
   }
 
-  @override
   List<Object?> get props =>
       [homeStatus, cartStatus, homeList, cartItems, error];
 }
